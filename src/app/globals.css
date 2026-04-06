@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07111f;
+  --foreground: #ecf4ff;
+  --muted: #9ab0cf;
+  --surface: rgba(7, 19, 35, 0.7);
+  --surface-strong: rgba(12, 28, 50, 0.92);
+  --surface-soft: rgba(18, 39, 68, 0.6);
+  --line: rgba(154, 183, 222, 0.16);
+  --line-strong: rgba(154, 183, 222, 0.28);
+  --primary: #3b82f6;
+  --primary-strong: #2563eb;
+  --primary-soft: rgba(59, 130, 246, 0.16);
+  --accent: #7dd3fc;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --shadow: 0 24px 80px rgba(2, 6, 23, 0.45);
+  --hero-glow:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.32), transparent 34%),
+    radial-gradient(circle at 80% 20%, rgba(125, 211, 252, 0.18), transparent 20%),
+    linear-gradient(180deg, #0b1730 0%, #07111f 55%, #050c17 100%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-surface-soft: var(--surface-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(125, 211, 252, 0.08), transparent 24%),
+    var(--hero-glow);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(96, 165, 250, 0.3);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(154, 183, 222, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(154, 183, 222, 0.06) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(14, 32, 57, 0.82), rgba(8, 20, 38, 0.92));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 22%);
+}
+
+.eyebrow {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.input-base {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgba(154, 183, 222, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--foreground);
+  padding: 0.85rem 1rem;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.input-base,
+textarea.input-base,
+select.input-base {
+  font: inherit;
+}
+
+.input-base::placeholder {
+  color: rgba(154, 176, 207, 0.74);
+}
+
+.input-base:hover {
+  border-color: rgba(154, 183, 222, 0.22);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.input-base:focus {
+  border-color: rgba(96, 165, 250, 0.56);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.14);
+}
+
+select.input-base {
+  appearance: none;
+}
+
+input[type="date"].input-base::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(0.7);
+}
